@@ -1,4 +1,4 @@
-<h1 align="center">Lichtblick</h1>
+<h1 align="center">BotVibe</h1>
 
 <div align="center">
   <a href="https://github.com/bmw-software-engineering/lichtblick/stargazers"><img src="https://img.shields.io/github/stars/bmw-software-engineering/lichtblick" alt="Stars Badge"/></a>
@@ -11,7 +11,7 @@
 
   <br />
 <p  align="center">
-Lichtblick is an integrated visualization and diagnosis tool for robotics, available in your browser or as a desktop app on Linux, Windows, and macOS.
+BotVibe is an integrated visualization and diagnosis tool for robotics, available in your browser or as a desktop app on Linux, Windows, and macOS.
 </p>
   <p align="center">
     <img alt="Lichtblick screenshot" src="resources/screenshot.png">
@@ -30,7 +30,7 @@ Lichtblick is an integrated visualization and diagnosis tool for robotics, avail
 Clone the repository:
 
 ```sh
-$ git clone https://github.com/bmw-software-engineering/lichtblick.git
+$ git clone https://github.com/Hikma-Tech/botvibe.git
 ```
 
 Pull large files with Git LFS:
@@ -64,7 +64,7 @@ $ yarn desktop:start        # launch electron
 $ yarn run web:serve        # it will be avaiable in http://localhost:8080
 ```
 
-## :hammer_and_wrench: Building Lichtblick
+## :hammer_and_wrench: Building BotVibe
 
 Build the application for production using these commands:
 
@@ -91,7 +91,7 @@ $ yarn run clean
 
 ## :pencil: License (Open Source)
 
-Lichtblick follows an open core licensing model. Most functionality is available in this repository, and can be reproduced or modified per the terms of the [Mozilla Public License v2.0](/LICENSE).
+BotVibe follows an open core licensing model. Most functionality is available in this repository, and can be reproduced or modified per the terms of the [Mozilla Public License v2.0](/LICENSE).
 
 ## :handshake: Contributing
 
@@ -99,4 +99,4 @@ Contributions are welcome! Lichtblick is primarily built in TypeScript and React
 
 ## :star: Credits
 
-Lichtblick originally began as a fork of [FoxGlove Studio](https://github.com/foxglove/studio), an open source project developed by [Foxglove](https://app.foxglove.dev/).
+BotVibe originally began as a fork of [Lichtblick](https://github.com/bmw-software-engineering/lichtblick), which was forked from an open source project, [Foxglove Studio](https://github.com/Russ76/foxglove_studio) developed by [Foxglove](https://app.foxglove.dev/).
