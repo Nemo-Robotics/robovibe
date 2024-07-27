@@ -17,11 +17,11 @@ EXPOSE 8080
 
 COPY <<EOF /entrypoint.sh
 # Optionally override the default layout with one provided via bind mount
-mkdir -p /lichtblick
-touch /lichtblick/default-layout.json
+mkdir -p /robovibe
+touch /robovibe/default-layout.json
 index_html=\$(cat index.html)
 replace_pattern='/*FOXBOX_STUDIO_DEFAULT_LAYOUT_PLACEHOLDER*/'
-replace_value=\$(cat /lichtblick/default-layout.json)
+replace_value=\$(cat /robovibe/default-layout.json)
 echo "\${index_html/"\$replace_pattern"/\$replace_value}" > index.html
 
 # Continue executing the CMD
