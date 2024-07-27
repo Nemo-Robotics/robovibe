@@ -80,8 +80,8 @@ $ yarn run desktop:build:prod   # compile necessary files
 $ yarn run web:build:prod
 
 # To build and run the web app using docker:
-$ docker build . -t lichtblick
-$ docker run -p 8080:8080 lichtblick
+$ docker build . -t robovibe
+$ docker run -p 8080:8080 robovibe
 
 # It is possible to clean up build files using the following command:
 $ yarn run clean
