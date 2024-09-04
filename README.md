@@ -30,7 +30,7 @@ RoboVibe is an integrated visualization and diagnosis tool for robotics, availab
 Clone the repository:
 
 ```sh
-$ git clone https://github.com/Hikma-Tech/robovibe.git
+$ git clone https://github.com/Nemo-Robotics/robovibe.git
 ```
 
 Pull large files with Git LFS:
