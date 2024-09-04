@@ -64,7 +64,7 @@ $ yarn desktop:start        # launch electron
 $ yarn run web:serve        # it will be avaiable in http://localhost:8080
 ```
 
-## :hammer_and_wrench: Building RoboVibe
+## :hammer_and_wrench: Building Periscope
 
 Build the application for production using these commands:
 
@@ -80,8 +80,8 @@ $ yarn run desktop:build:prod   # compile necessary files
 $ yarn run web:build:prod
 
 # To build and run the web app using docker:
-$ docker build . -t robovibe
-$ docker run -p 8080:8080 robovibe
+$ docker build . -t Periscope
+$ docker run -p 8080:8080 Periscope
 
 # It is possible to clean up build files using the following command:
 $ yarn run clean
@@ -91,12 +91,12 @@ $ yarn run clean
 
 ## :pencil: License (Open Source)
 
-RoboVibe follows an open core licensing model. Most functionality is available in this repository, and can be reproduced or modified per the terms of the [Mozilla Public License v2.0](/LICENSE).
+Periscope follows an open core licensing model. Most functionality is available in this repository, and can be reproduced or modified per the terms of the [Mozilla Public License v2.0](/LICENSE).
 
 ## :handshake: Contributing
 
-Contributions are welcome! RoboVibe is primarily built in TypeScript and ReactJS. All potential contributors must agree to the Contributor License Agreement outlined in [CONTRIBUTING.md](CONTRIBUTING.md).
+Contributions are welcome! Periscope is primarily built in TypeScript and ReactJS. All potential contributors must agree to the Contributor License Agreement outlined in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## :star: Credits
 
-RoboVibe originally began as a fork of [Lichtblick](https://github.com/bmw-software-engineering/lichtblick), which itself was forked from an open source project, [Foxglove Studio](https://github.com/Russ76/foxglove_studio) developed by [Foxglove](https://app.foxglove.dev/).
+Periscope originally began as a fork of [Lichtblick](https://github.com/bmw-software-engineering/lichtblick), which itself was forked from an open source project, [Foxglove Studio](https://github.com/Russ76/foxglove_studio) developed by [Foxglove](https://app.foxglove.dev/).
