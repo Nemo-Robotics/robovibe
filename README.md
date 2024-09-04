@@ -1,4 +1,4 @@
-<h1 align="center">RoboVibe</h1>
+<h1 align="center">Periscope</h1>
 
 <div align="center">
   <a href="https://github.com/bmw-software-engineering/lichtblick/stargazers"><img src="https://img.shields.io/github/stars/bmw-software-engineering/lichtblick" alt="Stars Badge"/></a>
@@ -11,7 +11,7 @@
 
   <br />
 <p  align="center">
-RoboVibe is an integrated visualization and diagnosis tool for robotics, available in your browser or as a desktop app on Linux, Windows, and macOS.
+Periscope is an integrated visualization and diagnosis tool for robotics, available in your browser or as a desktop app on Linux, Windows, and macOS.
 </p>
   <p align="center">
     <img alt="Lichtblick screenshot" src="resources/screenshot.png">
@@ -30,7 +30,7 @@ RoboVibe is an integrated visualization and diagnosis tool for robotics, availab
 Clone the repository:
 
 ```sh
-$ git clone https://github.com/Nemo-Robotics/robovibe.git
+$ git clone https://github.com/Nemo-Robotics/periscope.git
 ```
 
 Pull large files with Git LFS:
