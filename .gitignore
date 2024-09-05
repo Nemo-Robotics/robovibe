@@ -9,6 +9,7 @@ storybook-screenshots/
 storybook-static/
 # for jest --coverage
 coverage/
+.env
 
 # Yarn
 .yarn/*

@@ -20,7 +20,7 @@ import { makeStyles } from "tss-react/mui";
 
 import Logger from "@foxglove/log";
 import { AppSetting } from "@foxglove/studio-base/AppSetting";
-import AccountSettings from "@foxglove/studio-base/components/AccountSettingsSidebar/AccountSettings";
+import { AccountSettings } from "@foxglove/studio-base/components/AccountSettingsSidebar/AccountSettings";
 import { AppBar, AppBarProps } from "@foxglove/studio-base/components/AppBar";
 import { CustomWindowControlsProps } from "@foxglove/studio-base/components/AppBar/CustomWindowControls";
 import {
@@ -62,6 +62,7 @@ import {
   useCurrentLayoutSelector,
 } from "@foxglove/studio-base/context/CurrentLayoutContext";
 import {
+  CurrentUserProvider,
   useCurrentUser,
   useCurrentUserType,
 } from "@foxglove/studio-base/context/CurrentUserContext";
@@ -403,8 +404,8 @@ function WorkspaceContent(props: WorkspaceProps): JSX.Element {
     if (!enableNewTopNav) {
       if (supportsAccountSettings) {
         bottomItems.set("account", {
-          iconName: currentUser != undefined ? "BlockheadFilled" : "Blockhead",
-          title: currentUser != undefined ? `Signed in as ${currentUser.email}` : "Account",
+          iconName: currentUser ? "BlockheadFilled" : "Blockhead",
+          title: currentUser ? `Signed in as: ${currentUser.email}` : "Account",
           component: AccountSettings,
         });
       }
@@ -710,12 +711,14 @@ export default function Workspace(props: WorkspaceProps): JSX.Element {
   };
 
   return (
-    <WorkspaceContextProvider
-      initialState={initialState}
-      workspaceStoreCreator={workspaceStoreCreator}
-      disablePersistenceForStorybook={props.disablePersistenceForStorybook}
-    >
-      <WorkspaceContent {...props} />
-    </WorkspaceContextProvider>
+    <CurrentUserProvider>
+      <WorkspaceContextProvider
+        initialState={initialState}
+        workspaceStoreCreator={workspaceStoreCreator}
+        disablePersistenceForStorybook={props.disablePersistenceForStorybook}
+      >
+        <WorkspaceContent {...props} />
+      </WorkspaceContextProvider>
+    </CurrentUserProvider>
   );
 }

@@ -25,7 +25,6 @@ import { makeStyles } from "tss-react/mui";
 
 import Logger from "@foxglove/log";
 import { AppSetting } from "@foxglove/studio-base/AppSetting";
-import SignInPrompt from "@foxglove/studio-base/components/LayoutBrowser/SignInPrompt";
 import { useUnsavedChangesPrompt } from "@foxglove/studio-base/components/LayoutBrowser/UnsavedChangesPrompt";
 import { SidebarContent } from "@foxglove/studio-base/components/SidebarContent";
 import Stack from "@foxglove/studio-base/components/Stack";
@@ -50,6 +49,7 @@ import { downloadTextFile } from "@foxglove/studio-base/util/download";
 import showOpenFilePicker from "@foxglove/studio-base/util/showOpenFilePicker";
 
 import LayoutSection from "./LayoutSection";
+import { SignInPrompt } from "./SignInPrompt";
 import { useLayoutBrowserReducer } from "./reducer";
 
 const log = Logger.getLogger(__filename);
@@ -640,7 +640,15 @@ export default function LayoutBrowser({
           />
         )}
         {!enableNewTopNav && <Stack flexGrow={1} />}
-        {showSignInPrompt && <SignInPrompt onDismiss={() => void setHideSignInPrompt(true)} />}
+        {showSignInPrompt && (
+          <SignInPrompt
+            onSignInClick={() => {
+              // Implement your sign-in logic here
+              console.log("Sign in clicked");
+            }}
+            onDismiss={() => void setHideSignInPrompt(true)}
+          />
+        )}
       </Stack>
     </SidebarContent>
   );

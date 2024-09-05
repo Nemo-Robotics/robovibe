@@ -8,6 +8,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 
 import { IdbLayoutStorage } from "@foxglove/studio-base/IdbLayoutStorage";
 import GlobalCss from "@foxglove/studio-base/components/GlobalCss";
+import { CurrentUserProvider } from "@foxglove/studio-base/context/CurrentUserContext";
 import LayoutStorageContext from "@foxglove/studio-base/context/LayoutStorageContext";
 import { UserScriptStateProvider } from "@foxglove/studio-base/context/UserScriptStateContext";
 import EventsProvider from "@foxglove/studio-base/providers/EventsProvider";
@@ -124,37 +125,39 @@ export function App(props: AppProps): JSX.Element {
   }, []);
 
   return (
-    <AppConfigurationContext.Provider value={appConfiguration}>
-      <ColorSchemeThemeProvider>
-        {enableGlobalCss && <GlobalCss />}
-        <CssBaseline>
-          <ErrorBoundary>
-            <MaybeLaunchPreference>
-              <MultiProvider providers={providers}>
-                <DocumentTitleAdapter />
-                <SendNotificationToastAdapter />
-                <DndProvider backend={HTML5Backend}>
-                  <Suspense fallback={<></>}>
-                    <PanelCatalogProvider>
-                      <Workspace
-                        deepLinks={deepLinks}
-                        appBarLeftInset={props.appBarLeftInset}
-                        onAppBarDoubleClick={props.onAppBarDoubleClick}
-                        showCustomWindowControls={props.showCustomWindowControls}
-                        isMaximized={props.isMaximized}
-                        onMinimizeWindow={props.onMinimizeWindow}
-                        onMaximizeWindow={props.onMaximizeWindow}
-                        onUnmaximizeWindow={props.onUnmaximizeWindow}
-                        onCloseWindow={props.onCloseWindow}
-                      />
-                    </PanelCatalogProvider>
-                  </Suspense>
-                </DndProvider>
-              </MultiProvider>
-            </MaybeLaunchPreference>
-          </ErrorBoundary>
-        </CssBaseline>
-      </ColorSchemeThemeProvider>
-    </AppConfigurationContext.Provider>
+    <CurrentUserProvider>
+      <AppConfigurationContext.Provider value={appConfiguration}>
+        <ColorSchemeThemeProvider>
+          {enableGlobalCss && <GlobalCss />}
+          <CssBaseline>
+            <ErrorBoundary>
+              <MaybeLaunchPreference>
+                <MultiProvider providers={providers}>
+                  <DocumentTitleAdapter />
+                  <SendNotificationToastAdapter />
+                  <DndProvider backend={HTML5Backend}>
+                    <Suspense fallback={<></>}>
+                      <PanelCatalogProvider>
+                        <Workspace
+                          deepLinks={deepLinks}
+                          appBarLeftInset={props.appBarLeftInset}
+                          onAppBarDoubleClick={props.onAppBarDoubleClick}
+                          showCustomWindowControls={props.showCustomWindowControls}
+                          isMaximized={props.isMaximized}
+                          onMinimizeWindow={props.onMinimizeWindow}
+                          onMaximizeWindow={props.onMaximizeWindow}
+                          onUnmaximizeWindow={props.onUnmaximizeWindow}
+                          onCloseWindow={props.onCloseWindow}
+                        />
+                      </PanelCatalogProvider>
+                    </Suspense>
+                  </DndProvider>
+                </MultiProvider>
+              </MaybeLaunchPreference>
+            </ErrorBoundary>
+          </CssBaseline>
+        </ColorSchemeThemeProvider>
+      </AppConfigurationContext.Provider>
+    </CurrentUserProvider>
   );
 }
