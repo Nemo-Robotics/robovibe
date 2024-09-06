@@ -4,11 +4,16 @@
 
 import { Menu, MenuItem, PaperProps, PopoverPosition, PopoverReference } from "@mui/material";
 import { useCallback } from "react";
+import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { makeStyles } from "tss-react/mui";
 
 import { AppSettingsTab } from "@foxglove/studio-base/components/AppSettingsDialog/AppSettingsDialog";
+import { useCurrentUser } from "@foxglove/studio-base/context/CurrentUserContext";
 import { useWorkspaceActions } from "@foxglove/studio-base/context/Workspace/useWorkspaceActions";
+
+import SignInModal from "../SignInModal";
 
 const useStyles = makeStyles()({
   menuList: {
@@ -33,10 +38,18 @@ export function SettingsMenu({
   handleClose,
   open,
 }: SettingsMenuProps): JSX.Element {
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
+  const [isUserSignedIn, setIsUserSignedIn] = useState(false);
   const { classes } = useStyles();
   const { t } = useTranslation("appBar");
 
   const { dialogActions } = useWorkspaceActions();
+
+  const { currentUser, signIn, signOut } = useCurrentUser();
+
+  useEffect(() => {
+    setIsUserSignedIn(currentUser != undefined);
+  }, [currentUser]);
 
   const onSettingsClick = useCallback(
     (tab?: AppSettingsTab) => {
@@ -44,6 +57,17 @@ export function SettingsMenu({
     },
     [dialogActions.preferences],
   );
+
+  const handleSignInClick = useCallback(() => {
+    setIsSignInModalOpen(true);
+    handleClose();
+  }, [handleClose]);
+
+  const handleSignOutClick = useCallback(() => {
+    signOut();
+    handleClose();
+  }, [signOut, handleClose]);
+
   return (
     <>
       <Menu
@@ -76,7 +100,21 @@ export function SettingsMenu({
         >
           {t("extensions")}
         </MenuItem>
+        {isUserSignedIn ? (
+          <MenuItem onClick={handleSignOutClick}>{t("signOut")}</MenuItem>
+        ) : (
+          <MenuItem onClick={handleSignInClick}>{t("signIn")}</MenuItem>
+        )}
       </Menu>
+      <SignInModal
+        open={isSignInModalOpen}
+        onClose={() => {
+          setIsSignInModalOpen(false);
+        }}
+        onSignInSuccess={() => {
+          setIsSignInModalOpen(false);
+        }}
+      />
     </>
   );
 }

@@ -9,7 +9,8 @@
     "./**/jest.config.ts",
     "./ci/**/*.ts",
     "./resources/notarize.ts",
-    "./package.json"
+    "./package.json",
+    "packages/studio-base/src/config.ts"
   ],
   "compilerOptions": {
     "jsx": "react-jsx",

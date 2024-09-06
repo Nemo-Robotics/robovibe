@@ -2,6 +2,7 @@
 // License, v2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/
 
+import { Amplify, Auth } from "aws-amplify";
 import { Fragment, Suspense, useEffect, useMemo } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -39,6 +40,18 @@ import ExtensionMarketplaceProvider from "./providers/ExtensionMarketplaceProvid
 import PanelCatalogProvider from "./providers/PanelCatalogProvider";
 import { LaunchPreference } from "./screens/LaunchPreference";
 import { ExtensionLoader } from "./services/ExtensionLoader";
+
+Amplify.configure({
+  Auth: {
+    region: process.env.REACT_APP_AWS_REGION,
+    userPoolId: process.env.REACT_APP_USER_POOL_ID,
+    userPoolWebClientId: process.env.REACT_APP_USER_POOL_WEB_CLIENT_ID,
+  },
+});
+
+console.log("Region:", process.env.REACT_APP_AWS_REGION);
+console.log("User Pool ID:", process.env.REACT_APP_USER_POOL_ID);
+console.log("Web Client ID:", process.env.REACT_APP_USER_POOL_WEB_CLIENT_ID);
 
 type AppProps = CustomWindowControlsProps & {
   deepLinks: string[];

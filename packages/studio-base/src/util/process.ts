@@ -2,6 +2,8 @@
 // License, v2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/
 
+import { env } from "./env";
+
 // Provide a shim for global process variable users
 // We avoid using the npm process module since it has unfavorable performance for process.nextTick
 // and uses setTimeout(..., 0). Instead we use queueMicrotask which is much faster.
@@ -16,7 +18,7 @@ const process = {
 
   title: "browser",
   browser: true,
-  env: {},
+  env,
   argv: [],
 };
 
